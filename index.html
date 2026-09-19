@@ -1,0 +1,775 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Adaptación para celulares -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="theme-color" content="#080510">
+
+    <title>Para ti ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at center, #241735 0%, #090611 70%);
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+        }
+
+
+        /* =========================================
+           PANTALLA INICIAL
+        ========================================= */
+
+        #inicio {
+            position: fixed;
+
+            width: 100%;
+            height: 100%;
+
+            top: 0;
+            left: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                radial-gradient(circle at center,
+                #251532,
+                #090611 75%);
+
+            z-index: 1000;
+
+            transition: opacity 1.5s ease;
+        }
+
+
+        #inicio h1 {
+            font-size: clamp(2rem, 9vw, 3rem);
+
+            margin-bottom: 15px;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 0 10px rgba(255, 220, 80, 0.6),
+                0 0 25px rgba(255, 220, 80, 0.3);
+        }
+
+
+        #inicio p {
+            font-size: 1.1rem;
+
+            color: #ddd;
+
+            margin-bottom: 35px;
+
+            padding: 0 25px;
+        }
+
+
+        /* =========================================
+           BOTÓN
+        ========================================= */
+
+        #abrir {
+            border: none;
+
+            padding: 15px 35px;
+
+            border-radius: 50px;
+
+            background: #ffd83d;
+
+            color: #332400;
+
+            font-size: 1.1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 15px rgba(255, 216, 61, 0.6),
+                0 0 35px rgba(255, 216, 61, 0.25);
+
+            animation: pulsar 1.8s infinite;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        #abrir:active {
+            transform: scale(0.95);
+        }
+
+
+        /* =========================================
+           CONTENIDO PRINCIPAL
+        ========================================= */
+
+        #regalo {
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            opacity: 0;
+
+            transition: opacity 2s ease;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+
+        .contenido {
+
+            position: relative;
+
+            z-index: 50;
+
+            padding: 20px;
+
+            max-width: 600px;
+
+            animation: aparecer 2s ease;
+        }
+
+
+        /* =========================================
+           FLORES CENTRALES
+        ========================================= */
+
+        .flores-principales {
+
+            font-size: clamp(3.5rem, 18vw, 6rem);
+
+            letter-spacing: 5px;
+
+            margin-bottom: 15px;
+
+            filter:
+                drop-shadow(0 0 10px rgba(255, 210, 40, 0.8));
+
+            animation: crecer 2s ease;
+        }
+
+
+        /* =========================================
+           TITULO
+        ========================================= */
+
+        .titulo {
+
+            font-size: clamp(2rem, 9vw, 3rem);
+
+            color: #ffe45c;
+
+            margin-bottom: 20px;
+
+            text-shadow:
+                0 0 10px rgba(255, 220, 60, 0.8),
+                0 0 25px rgba(255, 220, 60, 0.4);
+        }
+
+
+        /* =========================================
+           CORAZÓN
+        ========================================= */
+
+        .corazon {
+
+            font-size: 3rem;
+
+            margin: 10px 0;
+
+            animation: latido 1.2s infinite;
+        }
+
+
+        /* =========================================
+           MENSAJE
+        ========================================= */
+
+        .mensaje {
+
+            font-size: clamp(1.7rem, 7vw, 2.4rem);
+
+            font-weight: bold;
+
+            color: white;
+
+            margin-top: 10px;
+
+            text-shadow:
+                0 0 10px rgba(255,255,255,0.5);
+        }
+
+
+        .submensaje {
+
+            font-size: 1.05rem;
+
+            line-height: 1.6;
+
+            color: #e8e8e8;
+
+            margin-top: 20px;
+
+            padding: 0 15px;
+        }
+
+
+        /* =========================================
+           FLORES QUE CAEN
+        ========================================= */
+
+        .flor {
+
+            position: fixed;
+
+            top: -80px;
+
+            z-index: 5;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            animation-name: caer;
+
+            animation-timing-function: linear;
+
+            animation-iteration-count: infinite;
+        }
+
+
+        .flor:nth-child(1) {
+            left: 5%;
+            font-size: 2rem;
+            animation-duration: 7s;
+            animation-delay: 0s;
+        }
+
+
+        .flor:nth-child(2) {
+            left: 15%;
+            font-size: 1.5rem;
+            animation-duration: 9s;
+            animation-delay: 2s;
+        }
+
+
+        .flor:nth-child(3) {
+            left: 27%;
+            font-size: 2.3rem;
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+
+        .flor:nth-child(4) {
+            left: 40%;
+            font-size: 1.7rem;
+            animation-duration: 10s;
+            animation-delay: 4s;
+        }
+
+
+        .flor:nth-child(5) {
+            left: 53%;
+            font-size: 2.2rem;
+            animation-duration: 7s;
+            animation-delay: 2s;
+        }
+
+
+        .flor:nth-child(6) {
+            left: 66%;
+            font-size: 1.6rem;
+            animation-duration: 9s;
+            animation-delay: 3s;
+        }
+
+
+        .flor:nth-child(7) {
+            left: 78%;
+            font-size: 2.4rem;
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+
+        .flor:nth-child(8) {
+            left: 90%;
+            font-size: 1.8rem;
+            animation-duration: 11s;
+            animation-delay: 5s;
+        }
+
+
+        /* =========================================
+           CORAZONES QUE CAEN
+        ========================================= */
+
+        .corazon-cayendo {
+
+            position: fixed;
+
+            top: -50px;
+
+            z-index: 4;
+
+            pointer-events: none;
+
+            animation: caerCorazon linear infinite;
+        }
+
+
+        .c1 {
+            left: 10%;
+            animation-duration: 8s;
+        }
+
+        .c2 {
+            left: 32%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .c3 {
+            left: 58%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .c4 {
+            left: 85%;
+            animation-duration: 11s;
+            animation-delay: 3s;
+        }
+
+
+        /* =========================================
+           BOTÓN DE MÚSICA
+        ========================================= */
+
+        #musica {
+
+            position: fixed;
+
+            bottom: 25px;
+
+            right: 20px;
+
+            z-index: 100;
+
+            border: none;
+
+            width: 50px;
+
+            height: 50px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 216, 61, 0.9);
+
+            font-size: 1.3rem;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 15px rgba(255,216,61,0.5);
+
+            display: none;
+        }
+
+
+        /* =========================================
+           ANIMACIONES
+        ========================================= */
+
+        @keyframes caer {
+
+            0% {
+
+                transform:
+                    translateY(-100px)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+
+                transform:
+                    translateY(110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes caerCorazon {
+
+            0% {
+
+                transform:
+                    translateY(-50px)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+
+                transform:
+                    translateY(110vh)
+                    rotate(180deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.5)
+                    translateY(30px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes crecer {
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(0);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+            }
+        }
+
+
+        @keyframes latido {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+            }
+        }
+
+
+        @keyframes pulsar {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.06);
+            }
+        }
+
+
+        /* =========================================
+           CELULARES PEQUEÑOS
+        ========================================= */
+
+        @media (max-height: 650px) {
+
+            .flores-principales {
+                font-size: 3rem;
+            }
+
+            .titulo {
+                font-size: 1.8rem;
+            }
+
+            .mensaje {
+                font-size: 1.5rem;
+            }
+
+            .submensaje {
+                font-size: 0.9rem;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         PANTALLA INICIAL
+    ========================================== -->
+
+    <section id="inicio">
+
+        <h1>
+            Tengo algo para ti 💌
+        </h1>
+
+        <p>
+            Un pequeño detalle hecho especialmente para ti...
+        </p>
+
+        <button id="abrir">
+            Abrir mi regalo ❤️
+        </button>
+
+    </section>
+
+
+
+    <!-- =========================================
+         REGALO
+    ========================================== -->
+
+    <main id="regalo">
+
+
+        <!-- Flores cayendo -->
+
+        <div class="flor">🌻</div>
+        <div class="flor">🌼</div>
+        <div class="flor">🌻</div>
+        <div class="flor">🌼</div>
+        <div class="flor">🌻</div>
+        <div class="flor">🌼</div>
+        <div class="flor">🌻</div>
+        <div class="flor">🌼</div>
+
+
+        <!-- Corazones -->
+
+        <div class="corazon-cayendo c1">❤️</div>
+        <div class="corazon-cayendo c2">💛</div>
+        <div class="corazon-cayendo c3">❤️</div>
+        <div class="corazon-cayendo c4">💛</div>
+
+
+        <!-- Contenido -->
+
+        <div class="contenido">
+
+            <div class="flores-principales">
+                🌻🌻🌻
+            </div>
+
+
+            <h1 class="titulo">
+                Flores amarillas para ti 💛
+            </h1>
+
+
+            <div class="corazon">
+                ❤️
+            </div>
+
+
+            <div class="mensaje">
+                Te quiero demasiado
+            </div>
+
+
+            <p class="submensaje">
+
+                Porque entre tantas personas,
+                tuve la suerte de encontrarte a ti.
+
+                <br><br>
+
+                Feliz Día del Amor y la Amistad,
+                mi amor. 🌻❤️
+
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         BOTÓN MÚSICA
+    ========================================== -->
+
+    <button id="musica">
+        🎵
+    </button>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        const botonAbrir = document.getElementById("abrir");
+
+        const inicio = document.getElementById("inicio");
+
+        const regalo = document.getElementById("regalo");
+
+        const botonMusica = document.getElementById("musica");
+
+
+        botonAbrir.addEventListener("click", function () {
+
+            /* Ocultar pantalla inicial */
+
+            inicio.style.opacity = "0";
+
+
+            /* Mostrar regalo */
+
+            regalo.style.opacity = "1";
+
+
+            /* Mostrar botón de música */
+
+            botonMusica.style.display = "block";
+
+
+            /* Eliminar pantalla inicial después de la animación */
+
+            setTimeout(function () {
+
+                inicio.style.display = "none";
+
+            }, 1500);
+
+        });
+
+
+
+        /*
+         * IMPORTANTE:
+         *
+         * Si quieres agregar música,
+         * coloca un archivo llamado:
+         *
+         * musica.mp3
+         *
+         * en la misma carpeta que index.html.
+         */
+
+
+        const audio = new Audio("musica.mp3");
+
+        audio.loop = true;
+
+
+        let reproduciendo = false;
+
+
+        botonMusica.addEventListener("click", function () {
+
+            if (!reproduciendo) {
+
+                audio.play();
+
+                botonMusica.textContent = "🔊";
+
+                reproduciendo = true;
+
+            } else {
+
+                audio.pause();
+
+                botonMusica.textContent = "🎵";
+
+                reproduciendo = false;
+
+            }
+
+        });
+
+
+    </script>
+
+
+</body>
+</html>
+```
