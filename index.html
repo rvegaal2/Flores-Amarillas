@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
 
-    <!-- Adaptación para celulares -->
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="theme-color" content="#080510">
+    <meta name="theme-color" content="#090611">
 
     <title>Para ti ❤️</title>
 
@@ -23,21 +22,25 @@
         html,
         body {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            min-height: 100%;
         }
 
         body {
+            min-height: 100vh;
+
             background:
-                radial-gradient(circle at center, #241735 0%, #090611 70%);
+                radial-gradient(
+                    circle at center,
+                    #291839 0%,
+                    #120b1d 45%,
+                    #07050c 100%
+                );
 
             font-family: Arial, Helvetica, sans-serif;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
             color: white;
+
+            overflow-x: hidden;
         }
 
 
@@ -46,25 +49,34 @@
         ========================================= */
 
         #inicio {
+
             position: fixed;
 
-            width: 100%;
-            height: 100%;
+            inset: 0;
 
-            top: 0;
-            left: 0;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
 
             display: flex;
+
             flex-direction: column;
+
             justify-content: center;
+
             align-items: center;
 
             text-align: center;
 
+            padding: 25px;
+
             background:
-                radial-gradient(circle at center,
-                #251532,
-                #090611 75%);
+                radial-gradient(
+                    circle at center,
+                    #291839 0%,
+                    #120b1d 50%,
+                    #07050c 100%
+                );
 
             z-index: 1000;
 
@@ -73,37 +85,42 @@
 
 
         #inicio h1 {
+
             font-size: clamp(2rem, 9vw, 3rem);
 
             margin-bottom: 15px;
 
-            color: #ffffff;
+            color: white;
 
             text-shadow:
-                0 0 10px rgba(255, 220, 80, 0.6),
-                0 0 25px rgba(255, 220, 80, 0.3);
+                0 0 10px rgba(255, 220, 80, 0.7),
+                0 0 25px rgba(255, 220, 80, 0.35);
         }
 
 
         #inicio p {
-            font-size: 1.1rem;
 
-            color: #ddd;
+            font-size: 1.05rem;
+
+            line-height: 1.6;
+
+            color: #dddddd;
+
+            max-width: 350px;
 
             margin-bottom: 35px;
-
-            padding: 0 25px;
         }
 
 
         /* =========================================
-           BOTÓN
+           BOTÓN ABRIR
         ========================================= */
 
         #abrir {
+
             border: none;
 
-            padding: 15px 35px;
+            padding: 16px 32px;
 
             border-radius: 50px;
 
@@ -111,15 +128,15 @@
 
             color: #332400;
 
-            font-size: 1.1rem;
+            font-size: 1.05rem;
 
             font-weight: bold;
 
             cursor: pointer;
 
             box-shadow:
-                0 0 15px rgba(255, 216, 61, 0.6),
-                0 0 35px rgba(255, 216, 61, 0.25);
+                0 0 15px rgba(255, 216, 61, 0.7),
+                0 0 35px rgba(255, 216, 61, 0.3);
 
             animation: pulsar 1.8s infinite;
 
@@ -128,24 +145,27 @@
 
 
         #abrir:active {
+
             transform: scale(0.95);
         }
 
 
         /* =========================================
-           CONTENIDO PRINCIPAL
+           REGALO
         ========================================= */
 
         #regalo {
 
             width: 100%;
-            height: 100%;
+
+            min-height: 100vh;
+            min-height: 100dvh;
 
             display: flex;
 
             justify-content: center;
 
-            align-items: center;
+            align-items: flex-start;
 
             text-align: center;
 
@@ -154,6 +174,8 @@
             transition: opacity 2s ease;
 
             position: relative;
+
+            padding: 60px 18px 100px;
 
             z-index: 10;
         }
@@ -165,7 +187,7 @@
 
             z-index: 50;
 
-            padding: 20px;
+            width: 100%;
 
             max-width: 600px;
 
@@ -174,7 +196,7 @@
 
 
         /* =========================================
-           FLORES CENTRALES
+           FLORES PRINCIPALES
         ========================================= */
 
         .flores-principales {
@@ -186,7 +208,10 @@
             margin-bottom: 15px;
 
             filter:
-                drop-shadow(0 0 10px rgba(255, 210, 40, 0.8));
+                drop-shadow(
+                    0 0 10px
+                    rgba(255, 210, 40, 0.85)
+                );
 
             animation: crecer 2s ease;
         }
@@ -200,9 +225,11 @@
 
             font-size: clamp(2rem, 9vw, 3rem);
 
+            line-height: 1.2;
+
             color: #ffe45c;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
 
             text-shadow:
                 0 0 10px rgba(255, 220, 60, 0.8),
@@ -225,7 +252,7 @@
 
 
         /* =========================================
-           MENSAJE
+           MENSAJE PRINCIPAL
         ========================================= */
 
         .mensaje {
@@ -243,17 +270,80 @@
         }
 
 
-        .submensaje {
+        /* =========================================
+           CARTA
+        ========================================= */
 
-            font-size: 1.05rem;
+        .carta {
+
+            margin: 35px auto 0;
+
+            width: 100%;
+
+            max-width: 520px;
+
+            padding: 28px 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.10),
+                    rgba(255,255,255,0.045)
+                );
+
+            border:
+
+                1px solid
+                rgba(255, 220, 90, 0.28);
+
+            border-radius: 22px;
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            color: #f4f4f4;
+
+            font-size: 1rem;
+
+            line-height: 1.75;
+
+            text-align: center;
+
+            box-shadow:
+                0 0 35px rgba(0,0,0,0.30);
+
+            animation: cartaAparecer 2.5s ease;
+        }
+
+
+        .carta p {
+
+            margin-bottom: 20px;
+        }
+
+
+        .carta p:last-child {
+
+            margin-bottom: 0;
+        }
+
+
+        .carta .firma {
+
+            color: #ffe45c;
 
             line-height: 1.6;
 
-            color: #e8e8e8;
+            margin-top: 25px;
+        }
 
-            margin-top: 20px;
 
-            padding: 0 15px;
+        .carta strong {
+
+            font-size: 1.15rem;
+
+            color: #ffd83d;
         }
 
 
@@ -285,9 +375,7 @@
             left: 5%;
             font-size: 2rem;
             animation-duration: 7s;
-            animation-delay: 0s;
         }
-
 
         .flor:nth-child(2) {
             left: 15%;
@@ -296,14 +384,12 @@
             animation-delay: 2s;
         }
 
-
         .flor:nth-child(3) {
             left: 27%;
             font-size: 2.3rem;
             animation-duration: 8s;
             animation-delay: 1s;
         }
-
 
         .flor:nth-child(4) {
             left: 40%;
@@ -312,14 +398,12 @@
             animation-delay: 4s;
         }
 
-
         .flor:nth-child(5) {
             left: 53%;
             font-size: 2.2rem;
             animation-duration: 7s;
             animation-delay: 2s;
         }
-
 
         .flor:nth-child(6) {
             left: 66%;
@@ -328,14 +412,12 @@
             animation-delay: 3s;
         }
 
-
         .flor:nth-child(7) {
             left: 78%;
             font-size: 2.4rem;
             animation-duration: 8s;
             animation-delay: 1s;
         }
-
 
         .flor:nth-child(8) {
             left: 90%;
@@ -359,7 +441,10 @@
 
             pointer-events: none;
 
-            animation: caerCorazon linear infinite;
+            animation:
+                caerCorazon
+                linear
+                infinite;
         }
 
 
@@ -403,22 +488,33 @@
 
             border: none;
 
-            width: 50px;
+            width: 55px;
 
-            height: 50px;
+            height: 55px;
 
             border-radius: 50%;
 
-            background: rgba(255, 216, 61, 0.9);
+            background:
+                rgba(255,216,61,0.95);
 
-            font-size: 1.3rem;
+            color: #332400;
+
+            font-size: 1.4rem;
 
             cursor: pointer;
 
             box-shadow:
-                0 0 15px rgba(255,216,61,0.5);
+                0 0 15px rgba(255,216,61,0.55);
 
             display: none;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        #musica:active {
+
+            transform: scale(0.92);
         }
 
 
@@ -438,10 +534,12 @@
             }
 
             10% {
+
                 opacity: 1;
             }
 
             90% {
+
                 opacity: 1;
             }
 
@@ -468,6 +566,7 @@
             }
 
             10% {
+
                 opacity: 1;
             }
 
@@ -504,6 +603,26 @@
         }
 
 
+        @keyframes cartaAparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(40px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
         @keyframes crecer {
 
             from {
@@ -526,10 +645,12 @@
 
             0%,
             100% {
+
                 transform: scale(1);
             }
 
             50% {
+
                 transform: scale(1.25);
             }
         }
@@ -539,10 +660,12 @@
 
             0%,
             100% {
+
                 transform: scale(1);
             }
 
             50% {
+
                 transform: scale(1.06);
             }
         }
@@ -552,24 +675,36 @@
            CELULARES PEQUEÑOS
         ========================================= */
 
-        @media (max-height: 650px) {
+        @media (max-height: 700px) {
+
+            #regalo {
+
+                padding-top: 35px;
+            }
 
             .flores-principales {
-                font-size: 3rem;
+
+                font-size: 3.2rem;
             }
 
             .titulo {
+
                 font-size: 1.8rem;
             }
 
             .mensaje {
+
                 font-size: 1.5rem;
             }
 
-            .submensaje {
-                font-size: 0.9rem;
+            .carta {
+
+                font-size: 0.94rem;
+
+                padding: 22px 18px;
             }
         }
+
 
     </style>
 </head>
@@ -589,7 +724,8 @@
         </h1>
 
         <p>
-            Un pequeño detalle hecho especialmente para ti...
+            Un pequeño detalle hecho especialmente
+            para ti...
         </p>
 
         <button id="abrir">
@@ -607,7 +743,7 @@
     <main id="regalo">
 
 
-        <!-- Flores cayendo -->
+        <!-- FLORES -->
 
         <div class="flor">🌻</div>
         <div class="flor">🌼</div>
@@ -619,17 +755,30 @@
         <div class="flor">🌼</div>
 
 
-        <!-- Corazones -->
+        <!-- CORAZONES -->
 
-        <div class="corazon-cayendo c1">❤️</div>
-        <div class="corazon-cayendo c2">💛</div>
-        <div class="corazon-cayendo c3">❤️</div>
-        <div class="corazon-cayendo c4">💛</div>
+        <div class="corazon-cayendo c1">
+            ❤️
+        </div>
+
+        <div class="corazon-cayendo c2">
+            💛
+        </div>
+
+        <div class="corazon-cayendo c3">
+            ❤️
+        </div>
+
+        <div class="corazon-cayendo c4">
+            💛
+        </div>
 
 
-        <!-- Contenido -->
+
+        <!-- CONTENIDO -->
 
         <div class="contenido">
+
 
             <div class="flores-principales">
                 🌻🌻🌻
@@ -648,15 +797,78 @@
 
             <div class="mensaje">
                 Te quiero demasiado
-           <div class="carta"> <p> Porque entre tantas personas, tuve la suerte de encontrarte a ti. </p> <p> Y si en mi próxima vida me tocara elegirte de nuevo, te volvería a buscar, incluso si tuviera que hacerlo hasta el fin del mundo. </p> <p> No sé qué nos depare el futuro, pero quiero que, pase lo que pase, nunca olvides lo importante que eres para mí. </p> <p> Gracias por existir, por llegar a mi vida y por dejarme compartir una parte de ella contigo. </p> <p> Y si algún día dudas de lo mucho que te quiero, vuelve a leer esto. ❤️ </p> <p class="firma"> Feliz Día del Amor y la Amistad, mi amor. <br><br> Siempre tuyo, <br> <strong>R. 🌻❤️</strong> </p> </div>>
+            </div>
 
+
+
+            <!-- =====================================
+                 CARTA
+            ====================================== -->
+
+            <div class="carta">
+
+                <p>
+                    Porque entre tantas personas,
+                    tuve la suerte de encontrarte a ti.
+                </p>
+
+
+                <p>
+                    Y si en mi próxima vida me tocara
+                    elegirte de nuevo, te volvería a buscar,
+                    incluso si tuviera que hacerlo
+                    hasta el fin del mundo.
+                </p>
+
+
+                <p>
+                    No sé qué nos depare el futuro,
+                    pero quiero que nunca olvides
+                    lo importante que eres para mí.
+                </p>
+
+
+                <p>
+                    Gracias por existir,
+                    por llegar a mi vida
+                    y por dejarme compartir
+                    una parte de ella contigo.
+                </p>
+
+
+                <p>
+                    Y si algún día dudas de lo mucho
+                    que te quiero, vuelve a leer esto. ❤️
+                </p>
+
+
+                <p class="firma">
+
+                    Feliz Día del Amor y la Amistad,
+                    mi amor.
+
+                    <br><br>
+
+                    Siempre tuyo,
+
+                    <br>
+
+                    <strong>
+                        R. 🌻❤️
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </div>
 
     </main>
 
 
 
     <!-- =========================================
-         BOTÓN MÚSICA
+         BOTÓN DE MÚSICA
     ========================================== -->
 
     <button id="musica">
@@ -671,57 +883,64 @@
 
     <script>
 
-        const botonAbrir = document.getElementById("abrir");
+        const botonAbrir =
+            document.getElementById("abrir");
 
-        const inicio = document.getElementById("inicio");
+        const inicio =
+            document.getElementById("inicio");
 
-        const regalo = document.getElementById("regalo");
+        const regalo =
+            document.getElementById("regalo");
 
-        const botonMusica = document.getElementById("musica");
-
-
-        botonAbrir.addEventListener("click", function () {
-
-            /* Ocultar pantalla inicial */
-
-            inicio.style.opacity = "0";
+        const botonMusica =
+            document.getElementById("musica");
 
 
-            /* Mostrar regalo */
+        /*
+         * =========================================
+         * ABRIR REGALO
+         * =========================================
+         */
 
-            regalo.style.opacity = "1";
+        botonAbrir.addEventListener(
+            "click",
+            function () {
+
+                inicio.style.opacity = "0";
+
+                regalo.style.opacity = "1";
+
+                botonMusica.style.display = "block";
 
 
-            /* Mostrar botón de música */
+                setTimeout(
+                    function () {
 
-            botonMusica.style.display = "block";
+                        inicio.style.display = "none";
 
+                    },
+                    1500
+                );
 
-            /* Eliminar pantalla inicial después de la animación */
-
-            setTimeout(function () {
-
-                inicio.style.display = "none";
-
-            }, 1500);
-
-        });
+            }
+        );
 
 
 
         /*
-         * IMPORTANTE:
+         * =========================================
+         * MÚSICA
+         * =========================================
          *
-         * Si quieres agregar música,
-         * coloca un archivo llamado:
+         * El archivo debe llamarse exactamente:
          *
          * musica.mp3
          *
-         * en la misma carpeta que index.html.
+         * y estar en la misma carpeta que index.html.
          */
 
-
-        const audio = new Audio("musica.mp3");
+        const audio =
+            new Audio("musica.mp3");
 
         audio.loop = true;
 
@@ -729,28 +948,42 @@
         let reproduciendo = false;
 
 
-        botonMusica.addEventListener("click", function () {
+        botonMusica.addEventListener(
+            "click",
+            function () {
 
-            if (!reproduciendo) {
+                if (!reproduciendo) {
 
-                audio.play();
+                    audio.play()
+                        .then(function () {
 
-                botonMusica.textContent = "🔊";
+                            botonMusica.textContent = "🔊";
 
-                reproduciendo = true;
+                            reproduciendo = true;
 
-            } else {
+                        })
+                        .catch(function () {
 
-                audio.pause();
+                            alert(
+                                "Toca nuevamente el botón 🎵 para reproducir la canción."
+                            );
 
-                botonMusica.textContent = "🎵";
+                        });
 
-                reproduciendo = false;
+                }
+
+                else {
+
+                    audio.pause();
+
+                    botonMusica.textContent = "🎵";
+
+                    reproduciendo = false;
+
+                }
 
             }
-
-        });
-
+        );
 
     </script>
 
