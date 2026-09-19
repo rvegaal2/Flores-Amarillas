@@ -762,97 +762,60 @@ body {
 
 
 <script>
+const botonAbrir = document.getElementById("abrir");
+const inicio = document.getElementById("inicio");
+const regalo = document.getElementById("regalo");
+const botonMusica = document.getElementById("musica");
 
-const botonAbrir =
-    document.getElementById("abrir");
+const audio = new Audio("./musica.mp3");
+audio.loop = true;
+audio.preload = "auto";
 
-const inicio =
-    document.getElementById("inicio");
+botonAbrir.addEventListener("click", async function () {
 
-const regalo =
-    document.getElementById("regalo");
+    // Mostrar el regalo
+    inicio.style.opacity = "0";
+    regalo.style.opacity = "1";
+    botonMusica.style.display = "block";
 
-const botonMusica =
-    document.getElementById("musica");
+    // Reproducir música después del toque
+    try {
+        await audio.play();
 
-
-
-/* =========================
-   ABRIR REGALO
-========================= */
-
-botonAbrir.addEventListener(
-    "click",
-    function () {
-
-        inicio.style.opacity = "0";
-
-        regalo.style.opacity = "1";
-
+        botonMusica.textContent = "🔊";
         botonMusica.style.display = "block";
 
+    } catch (error) {
 
-        setTimeout(
-            function () {
+        console.log("El navegador bloqueó el audio.");
 
-                inicio.style.display = "none";
-
-            },
-            1500
-        );
-
+        botonMusica.textContent = "🎵";
+        botonMusica.style.display = "block";
     }
-);
 
+    setTimeout(function () {
+        inicio.style.display = "none";
+    }, 1500);
+});
 
+botonMusica.addEventListener("click", async function () {
 
-/* =========================
-   MUSICA
-========================= */
+    if (audio.paused) {
 
-const audio =
-    new Audio("musica.mp3");
-
-audio.loop = true;
-
-let reproduciendo = false;
-
-
-botonMusica.addEventListener(
-    "click",
-    function () {
-
-        if (!reproduciendo) {
-
-            audio.play()
-            .then(function () {
-
-                botonMusica.textContent = "🔊";
-
-                reproduciendo = true;
-
-            })
-            .catch(function () {
-
-                alert(
-                    "Toca nuevamente 🎵 para reproducir la canción."
-                );
-
-            });
-
-        } else {
-
-            audio.pause();
-
-            botonMusica.textContent = "🎵";
-
-            reproduciendo = false;
-
+        try {
+            await audio.play();
+            botonMusica.textContent = "🔊";
+        } catch (error) {
+            console.log(error);
         }
 
-    }
-);
+    } else {
 
+        audio.pause();
+        botonMusica.textContent = "🎵";
+    }
+
+});
 </script>
 
 </body>
